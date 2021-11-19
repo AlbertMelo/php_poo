@@ -12,7 +12,7 @@ class Conta
     public function sacar(float $valorASacar): void
     {
         if ($valorASacar > $this->saldo) {
-            echo "Fundos insuficientes para realizar a operação.";
+            echo "Fundos insuficientes para realizar a operação!";
             return;
         }
 
@@ -32,7 +32,7 @@ class Conta
     public function transferir(float $valorATransferir, Conta $contaDestino): void
     {
         if ($valorATransferir > $this->saldo) {
-            echo "Saldo indisponível";
+            echo "Fundos insuficientes para realizar a operação!";
             return;
         }
 
