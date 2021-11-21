@@ -9,12 +9,25 @@ class Conta
 
     private float $saldo = 0;
 
+    private static $numeroDeContas = 0;
+
     public function __construct(string $cpfTitular, string $nomeTitular)
     {
         $this->cpfTitular = $cpfTitular;
         $this->nomeTitular = $nomeTitular;
         $this->validaNomeTitular($nomeTitular);
         $this->saldo = 0;
+        self::$numeroDeContas ++;
+    }
+
+    public function __destruct()
+    {
+        self::$numeroDeContas --;
+    }
+
+    public static function recuperaNumeroDeConta(): int
+    {
+        return self::$numeroDeContas;
     }
 
     private function validaNomeTitular(string $nomeTitular)
