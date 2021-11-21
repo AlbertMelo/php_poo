@@ -9,6 +9,22 @@ class Conta
 
     private float $saldo = 0;
 
+    public function __construct(string $cpfTitular, string $nomeTitular)
+    {
+        $this->cpfTitular = $cpfTitular;
+        $this->nomeTitular = $nomeTitular;
+        $this->validaNomeTitular($nomeTitular);
+        $this->saldo = 0;
+    }
+
+    private function validaNomeTitular(string $nomeTitular)
+    {
+        if (strlen($nomeTitular) < 5) {
+            echo "Nome precisa ter pelo menos 5 caracteres";
+            exit();
+        }
+    }
+
     public function saca(float $valorASacar): void
     {
         if ($valorASacar > $this->saldo) {
